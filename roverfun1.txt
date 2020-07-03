@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<string.h>
+
+int LeftRotate(int x , int y , char orient)
+{
+		   if(orient=='N')
+         	orient='W';
+         	
+         	else if(orient=='W')
+             orient='S';
+ 
+             else if(orient=='S')
+              orient='E';
+ 
+            else if(orient=='E')
+             orient='N';          
+}
+
+int RightRotate(int x, int y, char orient)
+{
+		   if(orient=='N')
+         	orient='E';
+         	
+         	else if(orient=='E')
+             orient='S';
+ 
+             else if(orient=='S')
+              orient='W';
+ 
+            else if(orient=='W')
+             orient='N';
+}
+int Move(int x, int y, char orient)
+{
+         	if(orient=='N')
+         	 y++;
+         	 else if (orient=='S')
+         	 y--;
+         	 else if(orient=='E')
+         	 x++;
+         	 else if(orient=='W')
+         	 x--;
+}
+
+int main()
+{
+	int x,y,i,ar,a;
+	char orient;
+	char mp[20];
+	printf("Starting position:");
+	scanf("%d %d %c",&x, &y, &orient);
+    printf("Movement Plan:");
+    scanf("%s",&mp);
+    for(i=0;i<strlen(mp);i++)
+    {
+    	if (mp[i]=='L')
+         {
+           LeftRotate(x,y,orient);
+		 }    	
+		 if(mp[i]=='R')
+		 {
+		   RightRotate(x,y,orient);
+         }
+         
+         if(mp[i]=='M')
+         {
+         	Move(x,y,orient);
+		 }
+		 
+		 
+	}
+
+	printf("Output: %d %d %c",x,y,orient);
+	return 0;
+	
+	
+}
